@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Result - Smart Study Tool</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Animated Colorful Background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .result-container {
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 90%;
+            max-width: 700px;
+            animation: slideUp 0.6s ease-in-out;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            /* Gradient Text (Purple/Peach Theme) */
+            background: -webkit-linear-gradient(45deg, #d57eeb, #fccb90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* The Summary Text Box */
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            /* Purple accent border */
+            border-left: 6px solid #d57eeb; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            margin-bottom: 35px;
+            animation: fadeIn 1s ease-in-out;
+            border: 1px solid #f0f0f0;
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Button Styles */
+        .back-button, .home-button {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Specific Gradients */
+        .back-button {
+            /* Purple/Peach Gradient (Primary Action) */
+            background: linear-gradient(45deg, #d57eeb, #fccb90);
+            box-shadow: 0 4px 15px rgba(213, 126, 235, 0.4);
+        }
+
+        .home-button {
+            /* Cool Blue Gradient (Secondary Action) */
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .back-button:hover, .home-button:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Summarized Text</h1>
+        
+        <p>{{ summary }}</p>
+        
+        <div class="buttons-container">
+            <a href="/summarizer" class="back-button">← Summarize Another</a>
+            <a href="/" class="home-button">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

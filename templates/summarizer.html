@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer - Smart Study Tool</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Animated Colorful Background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .form-container {
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            animation: slideUp 0.6s ease-in-out;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            /* Gradient Text (Purple/Peach Theme) */
+            background: -webkit-linear-gradient(45deg, #d57eeb, #fccb90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box; /* Fixes width padding issues */
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            resize: vertical;
+            min-height: 200px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        textarea:focus {
+            /* Purple focus color */
+            border-color: #d57eeb;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(213, 126, 235, 0.3);
+            outline: none;
+        }
+
+        button {
+            /* Purple to Peach Gradient */
+            background: linear-gradient(45deg, #d57eeb, #fccb90);
+            color: #ffffff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(213, 126, 235, 0.4);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(213, 126, 235, 0.6);
+        }
+
+        /* Back to Home Button */
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+            background: #fff0f0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e74c3c;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Summarize Text</h1>
+        <form method="post">
+            <textarea name="user_text" placeholder="Paste the long text you want to summarize here..."></textarea>
+            <button type="submit">Summarize</button>
+        </form>
+        
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+        
+        <a href="/" class="back-to-home">← Back to Home</a>
+    </div>
+</body>
+</html>
